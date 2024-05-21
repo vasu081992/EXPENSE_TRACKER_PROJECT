@@ -62,13 +62,13 @@ console.log("use effect mount state",isMounted)
 
     }, [currentPage, expenseList])
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     if(totalPages < currentPage && currentPage > 1){
-    //         setCurrentPage(prev => prev - 1)
-    //     }
+        if(totalPages < currentPage && currentPage > 1){
+            setCurrentPage(prev => prev - 1)
+        }
 
-    // }, [totalPages])
+    }, [totalPages])
 
     useEffect(()=>{
 
@@ -213,19 +213,21 @@ console.log("use effect mount state",isMounted)
         />
 </div>
 
-<div> 
-<h1 className='title'>Recent Transactions</h1>
+
+<div className='transactions-container'>
+
+  <div className='transaction-cards'>
+  <h1 className='title'>Recent Transactions</h1>
 
 {
 
 expenseList.length>0? (
 
     currentTransactions.map((expense)=>(
-    <div>
-  
+
   <TransactionCard title={expense.title} price={expense.price} date={expense.date} category={expense.category} handleDelete={()=>handleDelete(expense.id)} handleEdit={()=>handleEdit(expense.id)} transactions={expenseList}/>
 
-    </div>
+
 
     )
 ) )
@@ -237,10 +239,12 @@ expenseList.length>0? (
 <h1> NO transactions found !</h1>
 </div>
 )
-
 }
+</div>
+
 {totalPages > 1 && (<Pagination updatePage={setCurrentPage} currentPage={currentPage} totalPages={totalPages} />)}
 
+<div className='bar-chart'>
 
 <BarChartComponent
           data={[
@@ -249,12 +253,13 @@ expenseList.length>0? (
             { name: "Travel", value: categorySpends.travel },
           ]}
         />
+  </div>
 </div>
-
 {/*Modals*/}
 <Modal isOpen={modalIsOpen} setIsOpen={setModalIsOpen}>
 
 <FormIncome setisOpen={setModalIsOpen} setbalance={setbalance}/>
+
 </Modal>
 
 <Modal isOpen={modalExpenseIsOpen} setIsOpen={setmodalExpense}>

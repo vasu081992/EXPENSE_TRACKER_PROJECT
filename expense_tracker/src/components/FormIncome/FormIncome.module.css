@@ -1,0 +1,30 @@
+.input{
+    padding:10px;
+    margin:20px;
+    border-radius: 10px;
+    font-family: Ubuntu;
+}
+
+.button{
+    border-radius: 10px;
+    background-color: #F4BB4A;
+    color:white;
+    border: none;
+    padding:10px;
+    font-family: 'Ubuntu';
+    width:180px;
+    font-size: 18px;
+
+}
+
+.cancel {
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    color:black;
+    border: none;
+    padding:10px;
+    font-family: 'Ubuntu'; 
+    font-size: 18px;
+    width:120px;
+
+}

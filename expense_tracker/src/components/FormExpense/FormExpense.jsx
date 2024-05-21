@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
 import { useSnackbar } from 'notistack';
+import styles from './FormExpense.module.css'
+
 
 export default function FormExpense({setisOpen,setexpense,editId,setbalance,balance,expenseList,setExpenseList}) {
 
@@ -94,7 +96,8 @@ console.log("editId",editId)
     }
   return (
     <form onSubmit={editId ? handleEdit : handleSubmit}>
-        <h6>{editId? "Edit Expenses" : "Add Expenses"}</h6>
+        <h6 className={styles.title}>{editId? "Edit Expenses" : "Add Expenses"}</h6>
+        <div className={styles.row1}>
         <input type="text" placeholder="Title.." required value={form.title} onChange={(e) => setform({ ...form, title: e.target.value })}
 />
 
@@ -102,20 +105,25 @@ console.log("editId",editId)
     value={Number(form.price)} // Bind input value to the state
     onChange={(e) => setform({ ...form, price:Number(e.target.value) })}
     placeholder="Price..." required/>
+    </div>
+    <div className={styles.row1}>
 
-<label for="cars">Select category:</label>
+{/* <label for="cars">Select category:</label> */}
 
-<select name="categories" id="categories" value={form.category} onChange={(e)=>setform({...form,category:e.target.value})}  required>
+<select name="categories" id="categories" value={form.category} onChange={(e)=>setform({...form,category:e.target.value})} className={styles.selection} required>
   <option value="" disabled>Select category</option>
   <option value="food">food</option>
   <option value="travel">travel</option>
   <option value="entertainment">entertainment</option>
 </select>
 
-<input type="date"  value={form.date} onChange={(e)=>setform({...form,date:e.target.value}) } required/>
+<input type="date"  value={form.date} onChange={(e)=>setform({...form,date:e.target.value}) }   required/>
+</div>
+<div className={styles.row1}>
 
-    <button type="submit">Add Expense</button> {/*this submission will trigger function at submit in form*/}
-    <button onClick={handleClose}>Cancel</button>
+    <button type="submit" className={styles.add}>{editId? "Edit Expense" : "Add Expenses"}</button> {/*this submission will trigger function at submit in form*/}
+    <button onClick={handleClose} className={styles.cancel}>Cancel</button>
+    </div>
 </form>
   )
 }

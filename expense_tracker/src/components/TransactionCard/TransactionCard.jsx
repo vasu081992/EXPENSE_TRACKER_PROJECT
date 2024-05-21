@@ -15,36 +15,43 @@ export default function TransactionCard({title,price,date,category,handleDelete,
     return (
     <div className={styles.card}>
      
-    <h1> {title} </h1>
-    <p> <FaRupeeSign /> {price} </p>
-    <p> {date} </p>
-    <p> {category} </p>
-    <button className={styles.cardDelete} onClick={handleEdit}>
-    <MdEdit />
-    </button>
-    <button className={styles.cardDelete} onClick={handleDelete}>
-    <IoIosClose/>                   
-     </button>
- 
-
-    { category ==='food'&&
+     <div className={styles.leftFlex}>
+     { category ==='food'&&
     (
-<MdOutlineLocalPizza />
+<MdOutlineLocalPizza className={styles.image} />
     )
     }
 
 { category ==='travel'&&
     (
-<MdCardTravel />
+<MdCardTravel  className={styles.image} />
     )
     }
 
     
 { category ==='entertainment'&&
     (
-<BiCameraMovie />
+<BiCameraMovie  className={styles.image} />
     )
     }
+
+ <div className={styles.title}>
+    <h3> {title} </h3>
+    <p className={styles.date}> {date} </p>
+</div>
+</div>
+
+<div className={styles.rightflex}>
+    <p className={styles.price}> <FaRupeeSign/> {price} </p>
+    <button className={styles.cardEdit} onClick={handleEdit}>
+    <MdEdit />
+    </button>
+    <button className={styles.cardDelete} onClick={handleDelete}>
+    <IoIosClose/>                   
+     </button>
+ </div>
+
+    
   
     </div>
   )

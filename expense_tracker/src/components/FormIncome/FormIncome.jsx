@@ -1,9 +1,12 @@
 import React from 'react'
 import { useState } from 'react';
+import styles from './FormIncome.module.css'
+
+
 
 export default function FormIncome({setisOpen,setbalance}) {
 
-     const [inputText,setInputText] = useState(0)
+     const [inputText,setInputText] = useState()
 
     const handleSubmit = (e) =>{
 
@@ -27,11 +30,12 @@ export default function FormIncome({setisOpen,setbalance}) {
     }
   return (
     <form onSubmit={handleSubmit}>
+      <h1> Add Balance</h1>
     <input type="number"
     value={inputText} // Bind input value to the state
-    onChange={handleInputChange}  placeholder="Income amount..." required/>
-    <button type="submit">Add Balance</button> {/*this submission will trigger function at submit in form*/}
-    <button onClick={handleClose}>Cancel</button>
+    onChange={handleInputChange}  placeholder="Income amount..."  className={styles.input} required/>
+    <button type="submit" className={styles.button}>Add Balance</button> {/*this submission will trigger function at submit in form*/}
+    <button onClick={handleClose} className={styles.cancel} >Cancel</button>
 </form>
   )
 }
