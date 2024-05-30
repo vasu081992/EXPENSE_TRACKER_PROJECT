@@ -30,7 +30,7 @@ export default function FormIncome({setisOpen,setbalance}) {
     }
   return (
     <form onSubmit={handleSubmit}>
-      <h1> Add Balance</h1>
+      <h3> Add Balance</h3>
     <input type="number"
     value={inputText} // Bind input value to the state
     onChange={handleInputChange}  placeholder="Income amount..."  className={styles.input} required/>

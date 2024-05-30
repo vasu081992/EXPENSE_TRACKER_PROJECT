@@ -21,7 +21,7 @@ const Home = () =>{
     const [balance, setbalance]=useState(0)
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalExpenseIsOpen, setmodalExpense] = useState(false);
-    const[expense,setexpense]=useState(0)
+    const[expense,setexpense]=useState()
     const[expenseList,setExpenseList] =useState([])
     const [isMounted, setIsMounted] = useState(false);
    const [ edit,setEdit]= useState(0)
@@ -182,19 +182,17 @@ console.log("use effect mount state",isMounted)
     setEditDialog(true)
  }
 
-    const Card = ({buttonName,amount,onClick})=>{
+    const Card = ({buttonName,amount,onClick,classbutton})=>{
 
         return (
         <div className="expense-tracker">
-         <p> <span>{amount}</span><FaRupeeSign/> </p> 
-         <button onClick={onClick} className="buttons">{buttonName}</button>
+         <p className={buttonName==="+ Add Income"? "income":"expense" }> <span>{buttonName==="+ Add Income"? "Wallet Balance:":"Expenses:" }</span><FaRupeeSign className='rupee-logo'/>{amount} </p> 
+         <button onClick={onClick} className={classbutton}>{buttonName}</button>
          </div>
         )
     }
 
  
-
-
     return (
 
 <>
@@ -202,8 +200,11 @@ console.log("use effect mount state",isMounted)
     <p className='title'>Expense Tracker</p>
 
 <div className='expense-total'> 
-<Card buttonName="Add Income" amount={`Wallet balance : ${ balance}`} onClick={openModal} />
-<Card buttonName="Add expenses" amount={`Expenses : ${expense}`} onClick={openExpenseModal} />
+<Card buttonName="+ Add Income" onClick={openModal} classbutton={"add_income"} amount={`${balance}`}>
+</Card>
+
+<Card buttonName="+ Add expenses" amount={`${expense}`} onClick={openExpenseModal} classbutton={"add_expense"} />
+<div className='pie-chart-container'>
 <PieChartComponent
           data={[
             { name: "Food", value: categorySpends.food },
@@ -211,6 +212,7 @@ console.log("use effect mount state",isMounted)
             { name: "Travel", value: categorySpends.travel },
           ]}
         />
+    </div>
 </div>
 
 
@@ -227,23 +229,18 @@ expenseList.length>0? (
 
   <TransactionCard title={expense.title} price={expense.price} date={expense.date} category={expense.category} handleDelete={()=>handleDelete(expense.id)} handleEdit={()=>handleEdit(expense.id)} transactions={expenseList}/>
 
-
-
     )
 ) )
 
 :
-
 (
 <div className='expenses-chart'>
-<h1> NO transactions found !</h1>
+{/* <h1> No transactions found !</h1> */}
+<TransactionCard title={"No expenses Found !!"} transactions={expenseList}/>
 </div>
 )
 }
 </div>
-
-{totalPages > 1 && (<Pagination updatePage={setCurrentPage} currentPage={currentPage} totalPages={totalPages} />)}
-
 <div className='bar-chart'>
 
 <BarChartComponent
@@ -254,7 +251,12 @@ expenseList.length>0? (
           ]}
         />
   </div>
+  
 </div>
+
+{totalPages > 1 && (<Pagination updatePage={setCurrentPage} currentPage={currentPage} totalPages={totalPages} />)}
+
+
 {/*Modals*/}
 <Modal isOpen={modalIsOpen} setIsOpen={setModalIsOpen}>
 

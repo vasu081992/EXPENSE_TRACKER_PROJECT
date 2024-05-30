@@ -34,9 +34,10 @@
   border-radius: 15px;
   font-family:Ubuntu;
   font-size:30px;
+  color:red;
 }
 span{
-  color:red;
+  color:white;
 }
 
 .title{
@@ -44,7 +45,7 @@ span{
   text-align: left;
   font-size:32px;
   font-family: 'Ubuntu';
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 .expenses-chart{
@@ -91,14 +92,87 @@ body{
   align-items: center;
   justify-content: space-between;
   margin-left: 20px;
+   flex-wrap: wrap;
+
 }
 
 .transaction-cards {
-  flex: 1;
-  margin-right: 20px; /* Adjust margin as needed */
+  flex: 1.5;
+ /* Adjust margin as needed */
+
+ flex-wrap: wrap;
 }
 
 .bar-chart {
-  flex: 1;
+  flex: 0.5;
   border-radius: 20px;
+  margin-right:60px;
+  margin-bottom: 0px;
+}
+.add_income{
+background: linear-gradient(to right, #B5DC52, #89E148);
+width:200px;
+height:38px;
+font-family: 'Ubuntu';
+font-weight: 400;
+border-radius: 14px;
+color:white;
+border: none;
+padding:8px;
+font-size: 20px;
+}
+
+.add_expense{
+  background: linear-gradient(to right, #FF9595, #FF4747, #FF3838);
+width:200px;
+height:38px;
+font-family: 'Ubuntu';
+font-weight: 400;
+border-radius: 14px;
+color:white;
+border: none;
+padding:8px;
+font-size: 20px;
+}
+
+/* Example CSS */
+.wallet-balance {
+  color: white;
+}
+
+.wallet-balance .balance {
+  color: red;
+}
+
+.rupee-logo{
+  font-size: 22px;
+
+}
+.income{
+color:#9DFF5B;
+}
+
+.expense{
+color:#F4BB4A;
+
+}
+
+@media screen and (max-width: 700px) {
+  .expense-total .expense-tracker,
+  .transaction-cards,
+  .pie-chart-container {
+    width: 100%; /* Full width on smaller screens */
+    margin-right: 0;
+  }
+}
+
+.expense-total .expense-tracker:nth-child(2n),
+.transaction-cards:nth-child(2n),
+.pie-chart-container:nth-child(2n) {
+  margin-right: 0;
+}
+
+.pie-chart-container {
+  width: 100%; /* Make the pie chart full width */
+  margin-top: 20px; /* Add margin between the pie chart and the cards */
 }

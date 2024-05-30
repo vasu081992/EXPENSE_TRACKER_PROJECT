@@ -8,11 +8,25 @@ import { BiCameraMovie } from "react-icons/bi";
 import { FaRupeeSign } from "react-icons/fa";
 import { useState } from 'react';
 
-export default function TransactionCard({title,price,date,category,handleDelete,handleEdit}) {
+export default function TransactionCard({title,price,date,category,transactions,handleDelete=false,handleEdit=false}) {
 
 
 
     return (
+<>
+        {transactions.length<=0? (
+         
+            <>
+            
+            <div className={styles.nullTransact}>{title}</div>
+            
+            </>
+ 
+
+        )
+
+:
+(
     <div className={styles.card}>
      
      <div className={styles.leftFlex}>
@@ -55,6 +69,10 @@ export default function TransactionCard({title,price,date,category,handleDelete,
   
     </div>
   )
+
+}
+</>
+    )
 
 }
 

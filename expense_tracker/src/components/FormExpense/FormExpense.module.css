@@ -27,7 +27,7 @@ input{
     background-color: #FBFBFB;
     width:150px;
     margin-right: 20px;
-    
+    box-shadow: 3px 3px 4px grey;
 }
 .selection{
     border-radius: 10px;
@@ -44,6 +44,8 @@ input{
     padding:10px;
     margin-right: 20px;
     font-size: 18px;
+    box-shadow: 3px 3px 4px grey;
+
 }
 
 .cancel{
@@ -52,4 +54,6 @@ input{
     color:black;
     font-family: "Open Sans";
     font-size: 18px;
+    box-shadow: 3px 3px 4px grey;
+
 }
