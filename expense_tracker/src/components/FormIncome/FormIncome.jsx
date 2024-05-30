@@ -13,7 +13,7 @@ export default function FormIncome({setisOpen,setbalance}) {
 
       e.preventDefault();
 
-      if (Number(inputText) < 0) {
+      if (Number(inputText) <= 0) {
         enqueueSnackbar("Income should be greater than 0", { variant: "error" })
         setisOpen(false)
         return

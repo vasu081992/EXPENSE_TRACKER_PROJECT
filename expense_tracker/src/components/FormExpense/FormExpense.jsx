@@ -27,8 +27,8 @@ export default function FormExpense({setisOpen,setexpense,editId,setbalance,bala
           return
         }
 
-        if(Number(form.price)<0){
-          enqueueSnackbar("Expense cannot be in negative", { variant: "warning" })
+        if(Number(form.price)<=0){
+          enqueueSnackbar("Expense cannot be in negative or zero", { variant: "warning" })
           setisOpen(false)
           return
         }
