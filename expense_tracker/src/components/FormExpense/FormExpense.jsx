@@ -2,26 +2,37 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import { useSnackbar } from 'notistack';
 import styles from './FormExpense.module.css'
+import { enqueueSnackbar } from 'notistack'
 
 
 export default function FormExpense({setisOpen,setexpense,editId,setbalance,balance,expenseList,setExpenseList}) {
 
-
-    
       const[form,setform]=useState({
         title:'',
         price:'',
         category:'',
         date:''
       })
-      const { enqueueSnackbar } = useSnackbar();
 
       console.log("form data",form)
 
     const handleSubmit = (e) =>{
  
         console.log("submit is called")
-      e.preventDefault();
+        e.preventDefault();
+
+        if(Number(form.price)>balance){
+          enqueueSnackbar("Expense cannot exceed available balance", { variant: "error" })
+          setisOpen(false)
+          return
+        }
+
+        if(Number(form.price)<0){
+          enqueueSnackbar("Expense cannot be in negative", { variant: "warning" })
+          setisOpen(false)
+          return
+        }
+
 
       setexpense((prev)=>(prev)+Number(form.price))
           

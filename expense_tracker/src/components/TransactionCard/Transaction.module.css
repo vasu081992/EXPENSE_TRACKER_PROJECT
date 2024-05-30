@@ -24,6 +24,8 @@ button{
     font-size: 16px;
     color:grey;
     font-family: "Open Sans";
+    text-align: left;
+    gap: 0px;
 
 }
 .image{

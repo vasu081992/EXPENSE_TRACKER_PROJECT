@@ -30,6 +30,8 @@
     border:0;
     font-size:1.4rem;
     cursor: pointer;
+    margin-top: 20px;
+
 }
 
 .paginationWrapper button[disabled]{

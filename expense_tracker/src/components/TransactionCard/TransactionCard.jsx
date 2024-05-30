@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from "./Transaction.module.css"
 import { MdEdit } from "react-icons/md";
+import { MdOutlineModeEditOutline } from "react-icons/md";
+import { RiCloseCircleLine } from "react-icons/ri";
 import { IoIosClose } from "react-icons/io";
 import { MdOutlineLocalPizza } from "react-icons/md";
 import { MdCardTravel } from "react-icons/md";
@@ -57,12 +59,12 @@ export default function TransactionCard({title,price,date,category,transactions,
 
 <div className={styles.rightflex}>
     <p className={styles.price}> <FaRupeeSign/> {price} </p>
-    <button className={styles.cardEdit} onClick={handleEdit}>
-    <MdEdit />
-    </button>
     <button className={styles.cardDelete} onClick={handleDelete}>
-    <IoIosClose/>                   
+    <RiCloseCircleLine/>                   
      </button>
+     <button className={styles.cardEdit} onClick={handleEdit}>
+    <MdOutlineModeEditOutline />
+    </button>
  </div>
 
     

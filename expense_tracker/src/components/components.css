@@ -46,6 +46,7 @@ span{
   font-size:32px;
   font-family: 'Ubuntu';
   margin-left: 30px;
+  font-style: italic;
 }
 
 .expenses-chart{
@@ -62,7 +63,8 @@ span{
   align-items: center;
   background-color:#626262;
   border-radius: 40px;
-padding:20px
+padding:20px;
+margin-left: 20px;
 }
 
 body{

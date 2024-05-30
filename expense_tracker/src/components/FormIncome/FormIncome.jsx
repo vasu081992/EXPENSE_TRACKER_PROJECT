@@ -1,16 +1,23 @@
 import React from 'react'
 import { useState } from 'react';
 import styles from './FormIncome.module.css'
+import { enqueueSnackbar } from 'notistack'
 
 
 
 export default function FormIncome({setisOpen,setbalance}) {
 
-     const [inputText,setInputText] = useState()
+     const [inputText,setInputText] = useState('')
 
     const handleSubmit = (e) =>{
 
       e.preventDefault();
+
+      if (Number(inputText) < 0) {
+        enqueueSnackbar("Income should be greater than 0", { variant: "error" })
+        setisOpen(false)
+        return
+    }
 
       setbalance((prev)=>(prev)+Number(inputText))
     
